@@ -13,7 +13,8 @@ export default class App extends React.Component {
   calculateResult() {
     const text = this.state.resultText
     this.setState({
-      resultText: eval(text).toString()
+      resultText: eval(text).toString(),
+      calculationText: ""
     })
   }
 
