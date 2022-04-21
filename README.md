@@ -1,48 +1,54 @@
-## Lab 2 - flexbox + navigation
+## Lab 3 - renderowanie listy danych + obsługa progresu 
 <br>
 
+### Tab 1 - sortowanie i filtrowanie:
 
-### Widok podstawowy aplikacji:
+![obraz](https://user-images.githubusercontent.com/56678518/164527360-7a3f4d9c-a924-4286-9dbb-bf4b231d4d43.png)
+
+W pierwszej zakładce widnieją 3 przyciski i pole tekstowe. 
+Wciśnięcie pierwszego od lewej uruchomi skrypt który wygeneruje stuelementową listę
+
+![obraz](https://user-images.githubusercontent.com/56678518/164527756-016d858e-e6b7-4981-a106-1a8fe1c1ba84.png)
+
+Widok wygenerowanej listy:
+
+![obraz](https://user-images.githubusercontent.com/56678518/164527816-492e7822-1357-47ff-9246-5a5a43a67def.png)
+
+Środkowy przycisk pozwoli nam na posortowanie już wygenerowanej listy
+
+![obraz](https://user-images.githubusercontent.com/56678518/164528016-9a7b2068-ee06-4475-b7dc-4f3814b84c82.png)
+
+Widok posortowanej listy:
+
+![obraz](https://user-images.githubusercontent.com/56678518/164528066-d66f3b00-1013-44e0-8f19-3a0d93b2a1e5.png)
+
+Ostatni przycisk pozwoli nam przefitrować listę, za pomocą parametru. Parametr sprawi, że nasza lista będzie posiadać wartości większe niż podany parametr. Z defaultu parametr ten wynosi 100.
+
+![obraz](https://user-images.githubusercontent.com/56678518/164528578-e630dfba-fa6d-4c56-926c-73e2f31b1d51.png)
+
+
+![obraz](https://user-images.githubusercontent.com/56678518/164528453-419680c4-e2e8-43cb-9a21-7244bc165e76.png)
+
 <br>
 
-Jak widać na obrazku poniżej, widok nawigacji został rozwiązany na dole aplikacji. Wszystkie zakładki widoczne są cały czas, z czego aktulanie przyglądana zakładka wyróżniona jest kolorem oraz wypełnieniem okręgu.
+### Tab 2 - Lazy Load:
 
-Na pierwszej stronie `Spread Operations` wykorzystany został flexbox z wykorzystaniem `flex-direction: column`, co pozwoliło ustawić wszystkie elementy podrzędne w kolumnie, gdzie szerokość każdego elementu dostosowuje się do szerokości strony(telefonu). 
+Widok przed załadowaniem contentu
 
+![obraz](https://user-images.githubusercontent.com/56678518/164529281-cca0cbe5-bbb8-41db-9409-d25c80ec86a2.png)
 
-![obraz](https://user-images.githubusercontent.com/56678518/161445955-2c6c4e8a-c49f-4dbb-a852-341ac64d3acf.png)
+![obraz](https://user-images.githubusercontent.com/56678518/164528723-1217d9c0-864c-4731-ba06-8e0f3af072b9.png)
 
-Widok nr.2 - Rest pareameters
+Widok załadowanego contentu
 
-Na tej "podstronie" wykorzystany został niestandardowy element `<ScollView>` który pozwala na 
-wprowadzenie większej ilości elementów na stronę, co zarówno pozwoli nam na scrollowanie po stronie. Zostały również zaimportowane zdjęcia za pomocą znacznika `<Image>`. 
+![obraz](https://user-images.githubusercontent.com/56678518/164529620-4d2ea5e9-fd24-471a-92d6-000f2eea940c.png)
 
-Flex wykorzystany na tej stronie to `flex-direction: row`, który będzie próbował tego samego co z parametrem column, lecz wszystko odbędzie się po osi poziomej. Również wykorzystana został parametr `flex-wrap: wrap` który pozwoli nam na przeniesienie elementów do kolejnego wiersza, kiedy te, będą wychodzić poza zarysy strony(telefonu).
+![obraz](https://user-images.githubusercontent.com/56678518/164528747-ffa05f79-814f-4ee9-8dfe-1b12d5d41771.png)
 
+### Tab 3 - 5 ActivityIndicator
 
-![obraz](https://user-images.githubusercontent.com/56678518/161446170-394206d4-949c-4143-a582-398e99af082c.png)
+![obraz](https://user-images.githubusercontent.com/56678518/164529773-6c721af6-5f9f-46a2-bb92-5cece8d9b4b0.png)
 
+![obraz](https://user-images.githubusercontent.com/56678518/164529819-41e2cbd4-6b4f-4338-a299-cadccb765f7e.png)
 
-Widok nr.3 - useState hooks
-
-Na tej "podstronie" wykorzystany został flex ze stwierdzeniami wielkości kontenerów:
-- pierwszy - 1
-- drugi - 2
-- trzeci - 5,
-  
-co daje nam łącznie 8, czyli przez co będzie dzielona strona.
-
-![obraz](https://user-images.githubusercontent.com/56678518/161446366-4db4bac4-c949-4815-841c-725523378529.png)
-
-
-
-## Sekcja kodu: 
-
-Sekcja nawigacyjna wraz z zaimportowanym komponentem bottom-tabs:
-
-![obraz](https://user-images.githubusercontent.com/56678518/161446989-2294e97b-371f-4441-8ad3-f222beb84e97.png)
-
-
-Importy potrzebne do działania routerów/nawigacji:
-
-![obraz](https://user-images.githubusercontent.com/56678518/161447091-8a19dbed-e90d-427c-b345-f1f5cfb6f5e0.png)
+![obraz](https://user-images.githubusercontent.com/56678518/164529845-16cb4836-95d8-4456-82de-6b2d66e2dd7b.png)
