@@ -1,75 +1,79 @@
 import * as React from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
-import { useState } from 'react';
-
-import styles from '../../styles/styles';
+import {
+    View,
+    SafeAreaView,
+    StyleSheet,
+    TextInput,
+    Text,
+} from 'react-native';
 
 export default function Tab1({ navigation }) {
-    const [value, setValue] = useState()
-    const [TextFieldValue, setText] = useState()
-    const arr = [];
-
-    let text;
-
-    const sorting = () => {
-        text = value;
-        text = text.split(", ")
-        setValue((text.sort(function (a, b) { return a - b }).join(", ")))
-    }
-    const generating = () => {
-        for (let i = 0; i < 100; i++) {
-            arr.push(Math.floor(Math.random() * 1000) + 1);
-        }
-        setValue(arr.join(", "))
-    }
-    const filtering = () => {
-        text = value;
-        text = text.split(", ")
-        if (TextFieldValue != "")
-            var predicate = parseInt(TextFieldValue);
-        else
-            var predicate = 100;
-
-        var newArray = new Array();
-        text.forEach(function (number) {
-            if (number > predicate) {
-                newArray.push(number);
-            }
-        });
-
-        setValue(newArray.join(", "))
-    }
-
-
+    const [text, onChangeText] = React.useState("Useless Text");
+    const [text2, onChangeText2] = React.useState("Useless Text 2");
+    const [text3, onChangeText3] = React.useState("Useless Text 3");
+    const [number, onChangeNumber] = React.useState(null);
     return (
         <View>
-            <View style={styles.Main1}>
-                <Button
-                    style={styles.Buttons}
-                    title="generate numbers"
-                    color='lime'
-                    onPress={generating}
+            <SafeAreaView>
+                <Text style={styles.text}>
+                    Domyślny TextInput
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText}
+                    value={text}
                 />
-                <Button
-                    style={styles.Buttons}
-                    title="sort numbers"
-                    color='red'
-                    onPress={sorting}
+                <Text style={styles.text}>
+                    TextInput Numeryczny + Placeholder
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeNumber}
+                    value={number}
+                    placeholder="useless placeholder"
+                    keyboardType="numeric"
                 />
-                <Button
-                    style={styles.Buttons}
-                    title="filter numbers"
-                    onPress={filtering}
+                <Text style={styles.text}>
+                    TextInput - Duże litery
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText2}
+                    value={text2}
+                    autoCapitalize="characters"
                 />
-            </View>
-            <TextInput
-                backgroundColor='white'
-                color="black"
-                keyboardType='numeric'
-                onChangeText={text => setText(text)}
-                defaultValue = '100'
-            />
-            <Text>{value}</Text>
+                <Text style={styles.text}>
+                    TextInput - Clear Text on Focus
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText3}
+                    value={text3}
+                    clearTextOnFocus="true"
+                />
+                <Text style={styles.text}>
+                    Kolorowy placeholder
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder = "Placeholder"
+                    placeholderTextColor='rgb(255, 0, 255)'
+                />
+            </SafeAreaView>
         </View>
     );
-}
+};
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        paddingLeft: 10,
+        paddingTop: 0,
+        paddingRight: 10
+    },
+    text: {
+        paddingLeft: 10,
+        paddingTop: 10
+    }
+});

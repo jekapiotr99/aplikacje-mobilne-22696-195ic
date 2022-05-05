@@ -1,54 +1,61 @@
-## Lab 3 - renderowanie listy danych + obsługa progresu 
-<br>
-
-### Tab 1 - sortowanie i filtrowanie:
-
-![obraz](https://user-images.githubusercontent.com/56678518/164527360-7a3f4d9c-a924-4286-9dbb-bf4b231d4d43.png)
-
-W pierwszej zakładce widnieją 3 przyciski i pole tekstowe. 
-Wciśnięcie pierwszego od lewej uruchomi skrypt który wygeneruje stuelementową listę
-
-![obraz](https://user-images.githubusercontent.com/56678518/164527756-016d858e-e6b7-4981-a106-1a8fe1c1ba84.png)
-
-Widok wygenerowanej listy:
-
-![obraz](https://user-images.githubusercontent.com/56678518/164527816-492e7822-1357-47ff-9246-5a5a43a67def.png)
-
-Środkowy przycisk pozwoli nam na posortowanie już wygenerowanej listy
-
-![obraz](https://user-images.githubusercontent.com/56678518/164528016-9a7b2068-ee06-4475-b7dc-4f3814b84c82.png)
-
-Widok posortowanej listy:
-
-![obraz](https://user-images.githubusercontent.com/56678518/164528066-d66f3b00-1013-44e0-8f19-3a0d93b2a1e5.png)
-
-Ostatni przycisk pozwoli nam przefitrować listę, za pomocą parametru. Parametr sprawi, że nasza lista będzie posiadać wartości większe niż podany parametr. Z defaultu parametr ten wynosi 100.
-
-![obraz](https://user-images.githubusercontent.com/56678518/164528578-e630dfba-fa6d-4c56-926c-73e2f31b1d51.png)
-
-
-![obraz](https://user-images.githubusercontent.com/56678518/164528453-419680c4-e2e8-43cb-9a21-7244bc165e76.png)
+# Lab 4 - obsługa danych wprowadzanych przez użytkownika + modale 
 
 <br>
 
-### Tab 2 - Lazy Load:
+## Ekran pierwszy
 
-Widok przed załadowaniem contentu
+Ekran ten zawiera 5 TextInput'ów, które wyróżniają się następującymi cechami:
+  - Domyślny TextInput zawiera podstawowe propsy
+  - TextInput numeryczny zawiera props: `keyboardType="numeric"` co sprawia, że korzystamy z klawiatury numerycznej
+  - TextInput duże litery zawiera props: `autoCapitalize="characters"`, który sprawia, że wpisywane przez nas litery są duże,
+  - TextInput Clear Text on Focus, sprawia, że po wybraniu tego pola nasz Text się kasuje
+  - TextInput z kolorowym placeholderem zawiera props: `placeholderTextColor='rgb(255, 0, 255)'` który pozwala nam na zmianę koloru placeholdera.
 
-![obraz](https://user-images.githubusercontent.com/56678518/164529281-cca0cbe5-bbb8-41db-9409-d25c80ec86a2.png)
+![obraz](https://user-images.githubusercontent.com/56678518/166981507-792e369d-944a-40e3-83f6-ce42294b9ab2.png)
 
-![obraz](https://user-images.githubusercontent.com/56678518/164528723-1217d9c0-864c-4731-ba06-8e0f3af072b9.png)
+## Ekran drugi
 
-Widok załadowanego contentu
+Ekran ten zawiera 3 komponenty `Picker`, które pozwalają nam wybrać jedną z 2 dostępnych opcji. Pickery zawsze będą posiadały tę samą wartość, więc zmiana jednego z nich powoduję zmiane we wszystkich komponentach
 
-![obraz](https://user-images.githubusercontent.com/56678518/164529620-4d2ea5e9-fd24-471a-92d6-000f2eea940c.png)
+![obraz](https://user-images.githubusercontent.com/56678518/166982213-9a4d1dd7-297a-4c9d-bd5e-d5224fcbd0cf.png)
 
-![obraz](https://user-images.githubusercontent.com/56678518/164528747-ffa05f79-814f-4ee9-8dfe-1b12d5d41771.png)
+## Ekran trzeci
 
-### Tab 3 - 5 ActivityIndicator
+Początkowym stanem komponentu `Switch` jest stan wyłączony. Przełączenie komponentu zmieni jego stan oraz kolor, a z czym wiąże się pokazanie dodatkowego komponentu `Modal`.
 
-![obraz](https://user-images.githubusercontent.com/56678518/164529773-6c721af6-5f9f-46a2-bb92-5cece8d9b4b0.png)
+#### Widok stanu wyłączonego:
 
-![obraz](https://user-images.githubusercontent.com/56678518/164529819-41e2cbd4-6b4f-4338-a299-cadccb765f7e.png)
+![obraz](https://user-images.githubusercontent.com/56678518/166982488-188bcede-a891-4c3a-a433-df7828ed899b.png)
 
-![obraz](https://user-images.githubusercontent.com/56678518/164529845-16cb4836-95d8-4456-82de-6b2d66e2dd7b.png)
+#### Widok stanu włączonego:
+
+Stan włączony pokaże nam `Modal` z liczbą pseudolosową z zakresu 0 - 1000, oraz przycisk pozwalający na zamknięcie `Modal`. Zamknięcie `Modal` nie wiąże się ze zresetowaniem stanu `Switch`.
+
+![obraz](https://user-images.githubusercontent.com/56678518/166982694-7d38d741-2cc3-4530-9076-19cb8d947eb6.png)
+
+## Ekran czwarty
+
+Ta zakładka wykorzystuje narzędzia Datetimepicker z biblioteki `'@react-native-community/datetimepicker'`. 
+
+![obraz](https://user-images.githubusercontent.com/56678518/166982941-3d1f7615-1e46-4e1d-a423-61fbf649f628.png)
+
+Przycisk dzień pozwoli nam na wybranie daty - dzień/miesiąc/rok.
+
+![obraz](https://user-images.githubusercontent.com/56678518/166983129-418b3810-ccfe-400f-b9bf-5ca32ca6231f.png)
+
+Przycisk godzina pozwoli nam na wybranie czasu - godziny/minut
+
+![obraz](https://user-images.githubusercontent.com/56678518/166983169-bc161448-e8d2-427c-94b6-0ce70adeeea3.png)
+
+Przycisk pokaż datę wyświetli nam ustawioną przez nas datę. Podstawowo, na obu tych przyciskach ustawiona jest data i godzina lokalna urządzenia.
+
+![obraz](https://user-images.githubusercontent.com/56678518/166983205-613a7b3c-08a5-49cd-9f7c-ef51598cf331.png)
+
+
+## Ekran piąty
+
+Ekran ten wykorzystuje gotowe komponenty ekranu trzeciego i dodaje `ToastAndroid` zwany również jako `Snackbar`.
+
+Po zamknięciu modalu z opóźnieniem sekundowym pojawi się `Snackbar` z komunikatem: "Toast Text".
+
+![obraz](https://user-images.githubusercontent.com/56678518/166983905-fb01c440-70fb-41e1-9732-3b9582715e6e.png)
