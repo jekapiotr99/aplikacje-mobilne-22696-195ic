@@ -1,80 +1,89 @@
-import React, { useState } from 'react'
-import { View, Button, Platform, Alert, StyleSheet } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import React from 'react'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import Swipeable from 'react-native-swipeable';
 
 export default function Tab4({ navigation }) {
-
-    const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-
-    const onChange = (event, selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(Platform.OS === 'ios');
-        setDate(currentDate);
-    };
-
-    const showMode = (currentMode) => {
-        setShow(true);
-        setMode(currentMode);
-    };
-
-    const showDatepicker = () => {
-        showMode('date');
-    };
-
-    const showTimepicker = () => {
-        showMode('time');
-    };
-
-    const showSelectedDate = () => {
-        const day = date.getDate();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const hour = date.getHours();
-        const minute = date.getMinutes();
-        Alert.alert(
-            "Czas:  " + date.toLocaleTimeString() + "\nDzień: " + date.toDateString()
-        )
-    }
-
     return (
         <View style={styles.container}>
-            <View style={styles.top}>
-                <View style={styles.topItem}><Button onPress={showDatepicker} title="Dzień" /></View>
-                <View style={styles.topItem}><Button onPress={showTimepicker} title="Godzina" /></View>  
-            </View>
-            <View style={styles.topItem}>
-                <Button onPress={showSelectedDate} title="Pokaż datę" />
-            </View>
-            {show && (
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode={mode}
-                    is24Hour={true}
-                    display="default"
-                    onChange={onChange}
-                />
-            )}
+
+            <Swipeable
+                style = {styles.Swipe}
+                leftContent={(
+                    <View style={[styles.leftSwipeItem, { backgroundColor: 'lightskyblue' }]}>
+                        <Text style = {styles.text}>Pull action</Text>
+                    </View>
+                )}
+                rightButtons={[
+                    <TouchableOpacity style={[styles.rightSwipeItem, { backgroundColor: 'lightseagreen' }]}>
+                        <Text style = {styles.text}>1</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.rightSwipeItem, { backgroundColor: 'orchid' }]}>
+                        <Text style = {styles.text}>2</Text>
+                    </TouchableOpacity>
+                ]}
+            >
+                <View style={[styles.listItem, { backgroundColor: 'salmon' }]}>
+                    <Text style = {styles.text} >Swipe 1</Text>
+                </View>
+            </Swipeable>
+            <Swipeable
+                style = {styles.Swipe}
+                leftButtonWidth={45}
+                leftButtons={[
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'papayawhip' }]}>
+                        <Text style = {styles.text}>1</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'olivedrab' }]}>
+                        <Text style = {styles.text}>2</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'mistyrose' }]}>
+                        <Text style = {styles.text}>3</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'mediumaquamarine' }]}>
+                        <Text style = {styles.text}>4</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'lightslategray' }]}>
+                        <Text style = {styles.text}>5</Text>
+                    </TouchableOpacity>,
+                    <TouchableOpacity style={[styles.leftSwipeItem, { backgroundColor: 'ivory' }]}>
+                        <Text style = {styles.text}>6</Text>
+                    </TouchableOpacity>
+                ]}
+                rightContent={(
+                    <View style={[styles.rightSwipeItem, { backgroundColor: 'linen' }]}>
+                        <Text style = {styles.text}>Pull action</Text>
+                    </View>
+                )}
+            >
+                <View style={[styles.listItem, { backgroundColor: 'paleturquoise' }]}>
+                    <Text style = {styles.text}>Swipe 2</Text>
+                </View>
+            </Swipeable>
+
         </View>
     );
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
-        alignItems: "center",
-        justifyContent: "center"
-
+        justifyContent: "center",
+        alignItems: 'center',
     },
-    top: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignContent: 'space-between'
+    Swipe: {
+        marginVertical: 25
     },
-    topItem: {
-        margin: 10,
-        width: 100
+    leftSwipeItem: {
+        height: 50,
+        textAlign: 'center'
+    },
+    rightSwipeItem: {
+        height: 50,
+        textAlign: 'center'
+    },
+    text: {
+        height: 50,
+        textAlign: 'center',
+        justifyContent: 'center',
+        textAlignVertical: 'center'
     }
 });

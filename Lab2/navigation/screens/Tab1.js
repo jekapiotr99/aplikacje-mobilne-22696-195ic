@@ -1,79 +1,31 @@
 import * as React from 'react';
-import {
-    View,
-    SafeAreaView,
-    StyleSheet,
-    TextInput,
-    Text,
-} from 'react-native';
+import { StyleSheet, Text, SafeAreaView, ScrollView } from 'react-native';
 
 export default function Tab1({ navigation }) {
-    const [text, onChangeText] = React.useState("Useless Text");
-    const [text2, onChangeText2] = React.useState("Useless Text 2");
-    const [text3, onChangeText3] = React.useState("Useless Text 3");
-    const [number, onChangeNumber] = React.useState(null);
     return (
-        <View>
-            <SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <ScrollView style={styles.scrollView}>
                 <Text style={styles.text}>
-                    Domyślny TextInput
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                 </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
-                />
-                <Text style={styles.text}>
-                    TextInput Numeryczny + Placeholder
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeNumber}
-                    value={number}
-                    placeholder="useless placeholder"
-                    keyboardType="numeric"
-                />
-                <Text style={styles.text}>
-                    TextInput - Duże litery
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText2}
-                    value={text2}
-                    autoCapitalize="characters"
-                />
-                <Text style={styles.text}>
-                    TextInput - Clear Text on Focus
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText3}
-                    value={text3}
-                    clearTextOnFocus="true"
-                />
-                <Text style={styles.text}>
-                    Kolorowy placeholder
-                </Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder = "Placeholder"
-                    placeholderTextColor='rgb(255, 0, 255)'
-                />
-            </SafeAreaView>
-        </View>
+            </ScrollView>
+        </SafeAreaView>
     );
-};
+}
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        paddingLeft: 10,
-        paddingTop: 0,
-        paddingRight: 10
+    container: {
+        flex: 1,
+    },
+    scrollView: {
+        backgroundColor: 'lightblue',
     },
     text: {
-        paddingLeft: 10,
-        paddingTop: 10
-    }
+        fontSize: 50,
+    },
 });

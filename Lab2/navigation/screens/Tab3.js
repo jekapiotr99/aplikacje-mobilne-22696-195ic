@@ -1,95 +1,91 @@
 import * as React from 'react';
-import { View, Switch, StyleSheet, Modal, Text, Pressable } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 
 export default function Tab3({ navigation }) {
-    const [isEnabled, setIsEnabled] = React.useState(false);
-    const [Number, setNumber] = React.useState(1);
-    const toggleSwitch = () => {
-        setIsEnabled(previousState => !previousState);
-        setNumber(Math.floor(Math.random()*(1000)+0))
-        setModalVisible(!isEnabled);
+    const [Color, setColor] = React.useState(1);
+    const [wv, setWW] = React.useState(0);
+    const setValue = () => {
+        setWW(previousState => !previousState);
     };
-    const [modalVisible, setModalVisible] = React.useState(false);
-    return (
-        <View style={styles.container}>
-            <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
-                style={{ transform: [{ scaleX: 3 }, { scaleY: 3 }]}}
-            />
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!isEnabled);
-                }}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>{Number}</Text>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(false)}
-                        >
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
+    const onPress = () => setColor(generateColor);
+    const generateColor = () => {
+        const randomColor = Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, '0');
+        return `#${randomColor}`;
+    };
+
+    if (wv) {
+        return (
+            <View style={styles.container2}>
+                <TouchableHighlight onPress={setValue} style = {styles.mainBack}>
+                    <Text style={styles.text2}>Powrót do strony :)</Text>
+                </TouchableHighlight>
+                <WebView
+                    source={{ uri: 'https://zacniewski.github.io' }}
+                />
+            </View>
+        )
+    }
+    else {
+        return (
+            <View style={styles.container}>
+                <View style={styles.top}>
+                    <TouchableOpacity
+                        style={[styles.label, { backgroundColor: Color }]}
+                        onPress={onPress}
+                    >
+                        <Text style={styles.text}>Zmień kolor</Text>
+                    </TouchableOpacity>
                 </View>
-            </Modal>
-        </View>
-    );
+                <TouchableHighlight onPress={setValue}>
+                    <Text style={styles.text}>Przejdź na WebView</Text>
+                </TouchableHighlight>
+            </View>
+        );
+    }
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    centeredView: {
-        flex: 1,
         justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22
+        alignItems: 'center',
+        paddingHorizontal: 10,
     },
-    modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
+    top: {
+        margin: 10,
     },
-    button: {
-        borderRadius: 20,
+    text: {
+        borderColor: 'black',
         padding: 10,
-        elevation: 2
+        borderWidth: 2,
+        width: 200,
+        textAlign: 'center',
+        justifyContent: 'center',
+        textAlignVertical: 'center'
+
     },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
+    text2: {
+        padding: 10,
+        borderWidth: 2,
+        width: 200,
+        textAlign: 'center',
+        justifyContent: 'center',
+        textAlignVertical: 'center'
+
     },
-    buttonClose: {
-        backgroundColor: "#2196F3",
+    mainBack: {
+        width: '50%',
+        display: 'flex',
+        textAlign: 'center',
+        justifyContent: 'center',
+        textAlignVertical: 'center'
     },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
+    container2: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1',
     },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-    }
 });

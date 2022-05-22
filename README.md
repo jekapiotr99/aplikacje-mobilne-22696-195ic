@@ -1,61 +1,47 @@
-# Lab 4 - obsługa danych wprowadzanych przez użytkownika + modale 
+# Lab 5 - obsługa gestów użytkownika 
 
 <br>
 
 ## Ekran pierwszy
 
-Ekran ten zawiera 5 TextInput'ów, które wyróżniają się następującymi cechami:
-  - Domyślny TextInput zawiera podstawowe propsy
-  - TextInput numeryczny zawiera props: `keyboardType="numeric"` co sprawia, że korzystamy z klawiatury numerycznej
-  - TextInput duże litery zawiera props: `autoCapitalize="characters"`, który sprawia, że wpisywane przez nas litery są duże,
-  - TextInput Clear Text on Focus, sprawia, że po wybraniu tego pola nasz Text się kasuje
-  - TextInput z kolorowym placeholderem zawiera props: `placeholderTextColor='rgb(255, 0, 255)'` który pozwala nam na zmianę koloru placeholdera.
+Pierwszy ekran zawiera domyślny widok z oficjalnego tutoriala ScrollView na stronie react-native. Widok ten charakteryzuje się tym:
+- Jeden View,
+- Tekst do lewej strony,
+- Domyślny flexbow
 
-![obraz](https://user-images.githubusercontent.com/56678518/166981507-792e369d-944a-40e3-83f6-ce42294b9ab2.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169711740-72bd5dac-1050-4b90-b88f-082ee2bf3b86.png)
 
 ## Ekran drugi
 
-Ekran ten zawiera 3 komponenty `Picker`, które pozwalają nam wybrać jedną z 2 dostępnych opcji. Pickery zawsze będą posiadały tę samą wartość, więc zmiana jednego z nich powoduję zmiane we wszystkich komponentach
+Drugi ekran jest zmodyfikowaną wersją pierwszego ekranu, natomiast za pomocą flexbox'a stworzony został następujący widok:
+- Dwukolumnowy layout,
+- Zawsze pokazujący się scrollbar,
+- automatyczne zatrzymanie się scrolla, po "oderwaniu" palca od ekranu. Na pierwszym ekranie, po "oderwaniu" palca od ekranu, scroll stopniowo spowalniał, do momentu, kiedy się zatrzymał.
 
-![obraz](https://user-images.githubusercontent.com/56678518/166982213-9a4d1dd7-297a-4c9d-bd5e-d5224fcbd0cf.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169711762-1365fae4-ecd4-4e6e-a37e-3f1a6fb8d065.png)
 
 ## Ekran trzeci
 
-Początkowym stanem komponentu `Switch` jest stan wyłączony. Przełączenie komponentu zmieni jego stan oraz kolor, a z czym wiąże się pokazanie dodatkowego komponentu `Modal`.
+Ekran trzeci składa się z dwóch przycisków:
+- Pierwszy po kliknięciu uruchamia skrypt, który zmienia BGColor przycisku na losowo wygenerowany,
+- Drugi przycisk przenosi nas do nowego widoku, w którym możemy zobaczyć:
+  - Przycisk pozwalający nam na cofnięcie się na poprzednią stronę (stronę z dwoma przyciskami)
+  - Oraz wygenerowany WebView z przypadkowo wybraną stroną ;)
 
-#### Widok stanu wyłączonego:
+#### Widok strony z dwoma przyciskami
 
-![obraz](https://user-images.githubusercontent.com/56678518/166982488-188bcede-a891-4c3a-a433-df7828ed899b.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169713363-7585aeca-fe53-44cc-a5ca-27a35c69a01c.png)
 
-#### Widok stanu włączonego:
+#### Widok strony z WebView
 
-Stan włączony pokaże nam `Modal` z liczbą pseudolosową z zakresu 0 - 1000, oraz przycisk pozwalający na zamknięcie `Modal`. Zamknięcie `Modal` nie wiąże się ze zresetowaniem stanu `Switch`.
-
-![obraz](https://user-images.githubusercontent.com/56678518/166982694-7d38d741-2cc3-4530-9076-19cb8d947eb6.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169713375-17de975f-0281-49d2-8079-eba2799abd85.png)
 
 ## Ekran czwarty
 
-Ta zakładka wykorzystuje narzędzia Datetimepicker z biblioteki `'@react-native-community/datetimepicker'`. 
+Czwarty ekran zawiera 2 obiekty Swipeable
+- Pierwszy po przeciągnięciu w lewo pokaże nam 2 przyciski, a po przeciągnięciu w prawo pokaże nam kontener o kolorze jasnoniebieskim
+- Drugi działa tak samo jak pierwszy, lecz czynności są odwrócone kierunkami, a zamiast 2 przycisków pojawi się ich 6
 
-![obraz](https://user-images.githubusercontent.com/56678518/166982941-3d1f7615-1e46-4e1d-a423-61fbf649f628.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169713462-29df0341-ad4c-4e08-93ab-1668be61d819.png)
 
-Przycisk dzień pozwoli nam na wybranie daty - dzień/miesiąc/rok.
-
-![obraz](https://user-images.githubusercontent.com/56678518/166983129-418b3810-ccfe-400f-b9bf-5ca32ca6231f.png)
-
-Przycisk godzina pozwoli nam na wybranie czasu - godziny/minut
-
-![obraz](https://user-images.githubusercontent.com/56678518/166983169-bc161448-e8d2-427c-94b6-0ce70adeeea3.png)
-
-Przycisk pokaż datę wyświetli nam ustawioną przez nas datę. Podstawowo, na obu tych przyciskach ustawiona jest data i godzina lokalna urządzenia.
-
-![obraz](https://user-images.githubusercontent.com/56678518/166983205-613a7b3c-08a5-49cd-9f7c-ef51598cf331.png)
-
-
-## Ekran piąty
-
-Ekran ten wykorzystuje gotowe komponenty ekranu trzeciego i dodaje `ToastAndroid` zwany również jako `Snackbar`.
-
-Po zamknięciu modalu z opóźnieniem sekundowym pojawi się `Snackbar` z komunikatem: "Toast Text".
-
-![obraz](https://user-images.githubusercontent.com/56678518/166983905-fb01c440-70fb-41e1-9732-3b9582715e6e.png)
+![obraz](https://user-images.githubusercontent.com/56678518/169713473-6fb25e93-d7e5-4d11-a206-74d1fd8962f2.png)
