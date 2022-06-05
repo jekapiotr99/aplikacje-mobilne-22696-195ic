@@ -1,75 +1,38 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, SafeAreaView, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, useState } from 'react-native';
+import Slider from '@react-native-community/slider';
 
 export default function Tab2({ navigation }) {
+    const [scale, setScale] = React.useState(1);
+    const onPress = (value) => setScale(value)
     return (
-        <SafeAreaView>
-            <ScrollView>
-                <View style={styles.container}>
-                    <View style={styles.text}>
-                        <Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Text>
+        <View style={styles.container}>
+            <View>
+                <Image
+                    style={[styles.img, {width: 430 * scale, height: 520 * scale}]}
+                    source={require('../../assets/apple.png')}
+                />
+            </View>
+            <Slider
+                style={{ width: 415, height: 40 }}
+                minimumValue={0}
+                maximumValue={1}
+                minimumTrackTintColor="#FFFFFF"
+                maximumTrackTintColor="#000000"
+                onValueChange={onPress}
+            />
 
-                    </View>
-                    <View style={styles.text}>
-                        <Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Text>
-                    </View>
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'flex-start', // if you want to fill rows left to right
-        
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
-    scrollView: {
-        flex: 1,
-        backgroundColor: 'white',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-    },
-    text: {
-        width: '50%'
+    img: {
+        width: 430,
+        height: 520,
     },
 });

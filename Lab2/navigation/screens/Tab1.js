@@ -1,31 +1,38 @@
 import * as React from 'react';
-import { StyleSheet, Text, SafeAreaView, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, useState } from 'react-native';
+import Slider from '@react-native-community/slider';
 
 export default function Tab1({ navigation }) {
+    const [scale, setScale] = React.useState(1);
+    const onPress = (value) => setScale(value)
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <Text style={styles.text}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </Text>
-            </ScrollView>
-        </SafeAreaView>
+        <View style={styles.container}>
+            <View>
+                <Image
+                    style={[styles.img, {width: 415 * scale, height: 520 * scale}]}
+                    source={{ uri: 'https://jablonki.com/wp-content/uploads/2021/05/pexels-mali-maeder-102104.png' }}
+                />
+            </View>
+            <Slider
+                style={{ width: 415, height: 40 }}
+                minimumValue={0}
+                maximumValue={1}
+                minimumTrackTintColor="#FFFFFF"
+                maximumTrackTintColor="#000000"
+                onValueChange={onPress}
+            />
+
+        </View>
     );
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
-    scrollView: {
-        backgroundColor: 'lightblue',
-    },
-    text: {
-        fontSize: 50,
+    img: {
+        width: 415,
+        height: 520,
     },
 });
